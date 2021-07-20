@@ -5,11 +5,11 @@
 .titlebar {
     background: #1a355b;
     color:white;
-    min-height: 50px;
+    min-height: 25px;
 }
 
 .titlebar:backdrop {
     background: #091a32;
     color:white;
-    min-height: 50px;
+    min-height: 25px;
 }
