@@ -1,0 +1,55 @@
+#!/bin/bash
+# Script per editare un file criptato.
+#
+# TODO
+# - doppia digitazione password se file nuovo
+
+USAGE="Usage: $(basename "$0") filename"
+EDIT_CMD="/usr/bin/vi -i NONE"
+
+if [ $# -ne 1 ]; then
+   echo "$USAGE"
+   exit 1
+fi
+
+ENCFILENAME="$1"
+DECFILENAME="$(mktemp)"
+
+# digitazione password
+read -r -s -p "Password:" PW
+echo
+
+# decriptazione
+if [ -e "$ENCFILENAME" ]; then
+   if [ -f "$ENCFILENAME" ]; then
+      base64 -d "$ENCFILENAME" | mdecrypt -qz -k "$PW" >"$DECFILENAME"
+      if [ $? -ne 0 ]; then
+         echo "Error: wrong password or other error during decrypt"
+         shred -u "$DECFILENAME"
+         exit 1
+      fi
+   else
+      echo "$ENCFILENAME is not a regular file"
+      exit 1
+   fi
+else
+   touch "$DECFILENAME"
+fi
+
+#edit
+$EDIT_CMD "$DECFILENAME"
+
+#backup
+if [ -f "$ENCFILENAME" ]; then
+   mv "$ENCFILENAME" "$ENCFILENAME~"
+fi
+
+# digitazione password
+#read -s -p "Password:" PW
+#echo
+
+# criptazione
+mcrypt -qz -k "$PW" < "$DECFILENAME"| base64 >"$ENCFILENAME"
+
+# cancellazione file in chiaro
+shred -u "$DECFILENAME"

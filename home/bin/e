@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# e <comando> [<parametri>]
+#
+# Esegue il comando specificato in background nella directory corrente
+# redirigendo l'output su un file temporaneo.
+
+"$@" > "$(mktemp)" 2>&1 &

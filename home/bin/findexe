@@ -1,0 +1,2 @@
+#!/bin/bash
+find $(echo $PATH | tr ':' ' ') -maxdepth 1 -perm -0100 \( -type l -or -type f \) -name "$@" | sort | uniq

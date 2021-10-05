@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  tmp="$(mktemp)"
+  cat > "$tmp"
+  code -r "$tmp"
+else
+  code -r "$@"
+fi

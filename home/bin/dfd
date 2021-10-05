@@ -1,0 +1,2 @@
+#!/bin/bash
+df -h | grep -E --color=never '^(File|/dev)' | grep -v '^/dev/loop'

@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+   e xdg-open .
+else
+   #if [ x"${1:0:4}" == x"http" ]; then
+   #   "$BROWSER" "$@"
+   #else
+      e xdg-open "$@"
+   #fi
+fi

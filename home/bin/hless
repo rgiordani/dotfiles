@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  tmp="$(mktemp).html"
+  cat | ul | aha -b -s | sed 's/color: white; background-color: black;/color: #cecece; background-color: #1e1e1e;/'> "$tmp"
+  "$BROWSER" "$tmp" &> /dev/null
+else
+  "$BROWSER" "$@" &> /dev/null
+fi

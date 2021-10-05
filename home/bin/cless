@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  tmp="$(mktemp)"
+  cat > "$tmp"
+  ext="$(grep "$(file -b --mime-type "$tmp")" /etc/mime.types | awk '{print $2}')"
+  mv "$tmp" "$tmp.$ext"
+  tmp="$tmp.$ext"
+  pygmentize "$tmp" | less
+else
+  pygmentize "$1" | less
+fi

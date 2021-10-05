@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#(cat; echo -e '\n') | column -ent -s $'\t'
+(cat; echo -e '\n') | column -t -s $'\t'

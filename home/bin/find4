@@ -1,0 +1,2 @@
+#!/bin/bash
+find "$@" -type f -printf '%f\t%TY-%Tm-%Td %TT\t%h\t%s\n' | sort -t "	" -k 3,3 -k 1,1
