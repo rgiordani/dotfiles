@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+dconf dump / | awk 'match($0, /^\[(.*)\]$/, grp) { section=grp[1] } /^[^\[]/ { printf("%s/%s\n", section, $0) }'
