@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [ $# -eq 0 ]; then
+  cmd.exe /C start "$(wslpath -aw .)" &> /dev/null
+else
+  cmd.exe /C start "$(wslpath -aw "$1")" &> /dev/null
+fi
