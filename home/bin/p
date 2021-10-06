@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+PIPE_CMD=cat
+if [ -t 1 ] ; then
+    PIPE_CMD=less
+fi
+
+ps -eHww -o 'user:16 pid ppid lstart:25 rss:9 vsz:9 args' --sort -etime | "$PIPE_CMD"
+
