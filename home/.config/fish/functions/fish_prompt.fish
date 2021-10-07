@@ -5,7 +5,7 @@ function fish_prompt --description 'Write out the prompt'
     echo -s \
         (set_color 0080ff) "▶ " \
         (set_color ffff00 -o) "$USER" \
-        (set_color 000000) "@" \
+        (set_color aaaaaa) "@" \
         (set_color 00aa00) (hostname -s) \
         (set_color aa00aa) " " $prompt_pwd \
         (set_color 000000) (__fish_git_prompt) \
