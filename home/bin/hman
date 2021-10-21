@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # hman
-export MAN_KEEP_FORMATTING=1
-FILE="$(mktemp).html"
-man -L "en_US.UTF-8" --nh --nj "$@" | ul | aha -t "$*" -b -s \
-    | sed 's/color: white; background-color: black;/color: #cecece; background-color: #1e1e1e;/'> "$FILE"
-"$BROWSER" "$FILE" &> /dev/null
+
+#export MAN_KEEP_FORMATTING=1
+#FILE="$(mktemp).html"
+#man -L "en_US.UTF-8" --nh --nj "$@" | ul | aha -t "$*" -b -s \
+#    | sed 's/color: white; background-color: black;/color: #cccccc; background-color: #0c0c0c;/'> "$FILE"
+#"$BROWSER" "$FILE" &> /dev/null
+
+man -L "en_US.UTF-8" "$@" | batcat -l man --color=always --tabs=0 | hless
