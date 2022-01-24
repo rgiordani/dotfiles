@@ -7,4 +7,4 @@
 #    | sed 's/color: white; background-color: black;/color: #cccccc; background-color: #0c0c0c;/'> "$FILE"
 #"$BROWSER" "$FILE" &> /dev/null
 
-man -L "en_US.UTF-8" "$@" | batcat -l man --color=always --tabs=0 | hless
+man -L "en_US.UTF-8" "$@" | bat -l man --color=always --tabs=0 | hless

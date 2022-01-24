@@ -1,15 +1,47 @@
-/* UNITE windowDecorations */
-@import url('/home/riccardo/.local/share/gnome-shell/extensions/unite@hardpixel.eu/styles/gtk3/buttons-right/maximized.css');
-/* windowDecorations UNITE */
-
+@import url('/home/giordanir/.local/share/gnome-shell/extensions/unite@hardpixel.eu/styles/buttons-right.css');
 .titlebar {
-    background: #1a355b;
+    background: #21596b;
     color:white;
-    min-height: 24px;
+    min-height: 16px;
 }
 
 .titlebar:backdrop {
-    background: #091a32;
+    background: #174250;
     color:white;
-    min-height: 24px;
+    min-height: 16px;
+}
+
+/* focused window */
+decoration {
+    border: 1px solid #666;
+    background: #666;
+
+    /* switch colors smoothly with a transition animation */
+    transition: border-color ease-in 0.2s, background-color ease-in 0.2s;
+}
+
+/* unfocused window */
+decoration:backdrop {
+    border-color: #333;
+    background-color: #333;
+}
+
+/* focused window (server-side rendering hack) */
+.ssd .titlebar {
+    border: 1px solid #666;
+    border-bottom: none;
+
+    /* transition animation does not seem to work with server-side rendering */
+    /* transition: border-color ease-in 0.2s; */
+}
+
+/* unfocused window (server-side rendering hack) */
+.ssd .titlebar:backdrop {
+    border-color: #333;
+}
+
+/* remove borders of maximized windows */
+.maximized decoration,
+.ssd.maximized .titlebar {
+    border: none
 }

@@ -1,4 +1,4 @@
---theme=DarkNeon
+#--theme=DarkNeon
 --style=plain
 --color=always
 --wrap=never
