@@ -10,4 +10,5 @@ pkill -u "$USER" '^gnome-shell$'
 sleep 5
 gnome-shell &> /dev/null &
 
+sleep 10
 /usr/bin/xmodmap "$HOME/.Xmodmap"
