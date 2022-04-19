@@ -2,4 +2,5 @@
 --style=plain
 --color=always
 --wrap=never
+--paging=always
 --tabs=0
